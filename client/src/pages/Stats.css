@@ -1,0 +1,11 @@
+.stats-page { max-width: 900px; margin: 30px auto; padding: 20px; }
+.stats-page h1 { text-shadow: 2px 2px 4px rgba(0,0,0,0.1); margin-bottom: 24px; }
+.chart-card {
+  background: white; padding: 20px; margin-bottom: 30px;
+  border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.chart-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+.chart-controls { margin-bottom: 16px; display: flex; gap: 16px; font-size: 14px; }
+.chart-controls select { padding: 6px 10px; border: 1px solid #ddd; border-radius: 6px; outline: none; cursor: pointer; }
+.chart-error { color: #c33; padding: 12px; background: #fee; border-radius: 8px; }
