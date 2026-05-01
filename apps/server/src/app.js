@@ -22,10 +22,9 @@ const allowedOrigins = (process.env.CLIENT_URL || '')
 
 app.use(cors({
   origin: (origin, cb) => {
-    // React Native requests have no origin — always allow.
     if (!origin) return cb(null, true);
     if (allowedOrigins.includes(origin)) return cb(null, true);
-    cb(new Error(`CORS blocked: ${origin}`));
+    cb(null, false);
   },
   credentials: true,
 }));
