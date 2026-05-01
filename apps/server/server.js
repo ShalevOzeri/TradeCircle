@@ -19,6 +19,7 @@ const io = new Server(server, {
     origin: (origin, cb) => {
       if (!origin) return cb(null, true);
       if (allowedOrigins.includes(origin)) return cb(null, true);
+      if (/\.vercel\.app$/.test(origin)) return cb(null, true);
       cb(null, false);
     },
     credentials: true,
