@@ -20,8 +20,11 @@ const allowedOrigins = (process.env.CLIENT_URL || '')
   .map((o) => o.trim())
   .filter(Boolean);
 
+console.log('[CORS] allowedOrigins:', allowedOrigins);
+
 app.use(cors({
   origin: (origin, cb) => {
+    console.log('[CORS] incoming origin:', JSON.stringify(origin));
     if (!origin) return cb(null, true);
     if (allowedOrigins.includes(origin)) return cb(null, true);
     cb(null, false);
