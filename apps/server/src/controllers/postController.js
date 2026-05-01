@@ -46,7 +46,9 @@ exports.uploadMedia = (req, res, next) => {
     }
 
     const mediaType = req.file.mimetype.startsWith("image/") ? "image" : "video";
-    const mediaUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+    const proto = req.get("x-forwarded-proto") || req.protocol;
+    const base = process.env.SERVER_URL || `${proto}://${req.get("host")}`;
+    const mediaUrl = `${base}/uploads/${req.file.filename}`;
     return res.status(201).json({ mediaUrl, mediaType });
   });
 };
