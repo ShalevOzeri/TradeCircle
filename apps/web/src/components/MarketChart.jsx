@@ -1,12 +1,6 @@
 import { useEffect, useRef } from "react";
 import * as d3 from "d3";
-
-function fmtPrice(v) {
-  if (v == null) return "—";
-  if (v < 1) return v.toFixed(4);
-  if (v < 100) return v.toFixed(2);
-  return v.toLocaleString(undefined, { maximumFractionDigits: 2 });
-}
+import { formatPrice as fmtPrice } from "@tradecircle/utils";
 
 function draw(el, data) {
   const svg = d3.select(el);

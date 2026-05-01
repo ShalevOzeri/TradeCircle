@@ -1,24 +1,16 @@
-import { io } from "socket.io-client";
+// Socket service for web — delegates to @tradecircle/shared-hooks.
+// Token is read from localStorage via the callback pattern so the shared
+// package stays platform-agnostic (mobile will pass expo-secure-store reader).
+import {
+  connectSocket as _connectSocket,
+  getSocket,
+  disconnectSocket,
+} from '@tradecircle/shared-hooks';
 
-let socket = null;
+const getToken = () => localStorage.getItem('token');
+
+export { getSocket, disconnectSocket };
 
 export function connectSocket() {
-  const token = localStorage.getItem("token");
-  if (!token) return null;
-  if (socket?.connected) return socket;
-
-  socket = io("http://localhost:5000", {
-    auth: { token },
-    autoConnect: true,
-    reconnection: true
-  });
-
-  socket.on("connect_error", (err) => console.error("[socket] connection error:", err.message));
-  return socket;
-}
-
-export function getSocket() { return socket; }
-
-export function disconnectSocket() {
-  if (socket) { socket.disconnect(); socket = null; }
+  return _connectSocket(getToken);
 }

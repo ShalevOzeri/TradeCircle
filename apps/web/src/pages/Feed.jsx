@@ -3,24 +3,13 @@ import { getFeed, createPost, toggleLike, addComment, deletePost, uploadMedia, g
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import MarketMentionChips from "../components/MarketMentionChips";
+import { timeAgo, initials } from "@tradecircle/utils";
 
 const marketSnapshot = [
   { symbol: "BTC", name: "Bitcoin", price: "$68,420", change: "+2.1%", tone: "positive" },
   { symbol: "NVDA", name: "NVIDIA", price: "$1,205", change: "+1.4%", tone: "positive" },
   { symbol: "TSLA", name: "Tesla", price: "$182.55", change: "-0.8%", tone: "negative" }
 ];
-
-function initials(name = "") {
-  return name.split(" ").map(w => w[0]).join("").toUpperCase().slice(0, 2);
-}
-
-function timeAgo(dateStr) {
-  const diff = Math.floor((Date.now() - new Date(dateStr)) / 1000);
-  if (diff < 60) return "just now";
-  if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
-  if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
-  return new Date(dateStr).toLocaleDateString();
-}
 
 const MEDIA_TYPES = ["none", "image", "video"];
 

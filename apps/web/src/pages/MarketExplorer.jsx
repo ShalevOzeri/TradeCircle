@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { getMarketQuotes } from "../services/api";
 import MarketChartModal from "../components/MarketChartModal";
+import { formatPrice } from "@tradecircle/utils";
 
 const MARKET_ITEMS = [
   { symbol: "BTC", name: "Bitcoin", type: "crypto", sector: "Store of value", price: 68420, change: 2.1, volume: "34.2B" },
@@ -38,14 +39,6 @@ const MARKET_ITEMS = [
   { symbol: "IBEX", name: "IBEX 35",    type: "index", sector: "Spain",         price: 11200, change: 0.3,  volume: "Index" },
   { symbol: "SMI",  name: "SMI",        type: "index", sector: "Switzerland",   price: 11800, change: 0.2,  volume: "Index" },
 ];
-
-function formatPrice(value) {
-  if (value < 0.1) return value.toFixed(4);
-  if (value < 1) return value.toFixed(4);
-  if (value < 10) return value.toFixed(2);
-  if (value < 100) return value.toFixed(2);
-  return value.toLocaleString(undefined, { maximumFractionDigits: 2 });
-}
 
 function getPinnedKey(userId) {
   return `tradecircle:pinned:${userId}`;

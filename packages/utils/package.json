@@ -1,0 +1,7 @@
+{
+  "name": "@tradecircle/utils",
+  "version": "1.0.0",
+  "description": "Shared utility functions (timeAgo, formatPrice, initials) for web and mobile",
+  "main": "index.js",
+  "private": true
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@tradecircle/shared-hooks",
+  "version": "1.0.0",
+  "description": "Shared React hooks (useAuth, useSocket, usePosts) for web and mobile",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "socket.io-client": "^4.7.5"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  }
+}

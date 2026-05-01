@@ -1,0 +1,23 @@
+{
+  "name": "tradecircle",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run start --workspace=apps/web",
+    "dev:server": "npm run dev --workspace=apps/server",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:web\"",
+    "build:web": "npm run build --workspace=apps/web",
+    "install:all": "npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "turbo": "^2.0.0"
+  },
+  "dependencies": {
+    "expo-camera": "^55.0.16"
+  }
+}

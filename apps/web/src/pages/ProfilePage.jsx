@@ -3,14 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getUser, getUserPosts, updateProfile, sendFriendRequest, acceptFriendRequest, deletePost, updatePost } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import MarketMentionChips from "../components/MarketMentionChips";
-
-function timeAgo(d) {
-  const s = Math.floor((Date.now() - new Date(d)) / 1000);
-  if (s < 60) return "just now";
-  if (s < 3600) return `${Math.floor(s / 60)}m ago`;
-  if (s < 86400) return `${Math.floor(s / 3600)}h ago`;
-  return new Date(d).toLocaleDateString();
-}
+import { timeAgo } from "@tradecircle/utils";
 
 function ProfileCanvas({ name, username }) {
   const canvasRef = useRef(null);

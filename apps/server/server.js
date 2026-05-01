@@ -9,8 +9,20 @@ const { setIO } = require("./src/sockets/io");
 const PORT = process.env.PORT || 5000;
 const server = http.createServer(app);
 
+const allowedOrigins = (process.env.CLIENT_URL || '')
+  .split(',')
+  .map((o) => o.trim())
+  .filter(Boolean);
+
 const io = new Server(server, {
-  cors: { origin: process.env.CLIENT_URL, credentials: true }
+  cors: {
+    origin: (origin, cb) => {
+      if (!origin) return cb(null, true);
+      if (allowedOrigins.includes(origin)) return cb(null, true);
+      cb(new Error(`CORS blocked: ${origin}`));
+    },
+    credentials: true,
+  }
 });
 
 setIO(io);

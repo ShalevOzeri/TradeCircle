@@ -1,0 +1,10 @@
+{
+  "name": "@tradecircle/api-client",
+  "version": "1.0.0",
+  "description": "Shared API client (axios-based) for web and mobile",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "axios": "^1.7.0"
+  }
+}
