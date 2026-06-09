@@ -10,7 +10,7 @@
     "dev:web": "npm run start --workspace=apps/web",
     "dev:server": "npm run dev --workspace=apps/server",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:web\"",
-    "build": "cd apps/web && CI=false npm run build && mv build ../../build",
+    "build": "cd apps/web && CI=false BUILD_PATH=../../build npm run build",
     "build:web": "npm run build --workspace=apps/web",
     "install:all": "npm install"
   },
