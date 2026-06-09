@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "build",
+  "buildCommand": "cd apps/web && CI=false npm run build",
+  "outputDirectory": "apps/web/build",
   "installCommand": "npm install",
   "framework": null
 }
